@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiLang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+
+            <h1 class="logo"> Lang</h1>
+
+            <div id="iconesIdioma">
+                <img onclick="Escolher('ptbr')" src="imgIdioms/pt-br.png" class="img-ptbr">
+                <img onclick="Escolher('mng')" src="imgIdioms/197385.png" class="img-mng">  
+                <img onclick="Escolher('es')" src="imgIdioms/197593.png" class="img-es">
+            </div>
+
+    </header>
+
+
+    <section class="sectionTextoInicial">
+        <h3 class="TextoInicial"> A Augebit é uma empresa especializada na gestão de projetos técnicos e artísticos. Contudo, recentemente <br> foi acrescentado em nosso site a nova mecânica de tradução de texto, onde busca facilitar o entendimento <br>e a interpretação de pessoas com idiomas estrangeiros. </h3>
+    </section>
+
+    <section class="divCaixas">
+
+        <div class="caixa" id="conteudo1">Clique nos icones no canto superior direito!</div>
+        <div class="caixa" id="conteudo2">Clique nos icones no canto superior direito!</div>
+        <div class="caixa" id="conteudo3">Clique nos icones no canto superior direito!</div>
+        <div class="caixa" id="conteudo4">Clique nos icones no canto superior direito!</div>
+        <div class="caixa" id="conteudo5">Clique nos icones no canto superior direito!</div>
+    </section>
+
+    <script defer>
+        function Escolher(idioma) {
+
+        fetch(`texto_${idioma}.json`)
+            .then(resposta => resposta.json())
+            .then(texto => {
+                document.getElementById('conteudo1').innerHTML = texto.conteudo1;
+                document.getElementById('conteudo2').innerHTML = texto.conteudo2;
+                document.getElementById('conteudo3').innerHTML = texto.conteudo3;
+                document.getElementById('conteudo4').innerHTML = texto.conteudo4;
+                document.getElementById('conteudo5').innerHTML = texto.conteudo5;
+            })
+            .catch(error => console.error('Erro buscando textos', error));
+    }
+        
+    </script>
+</body>
+</html>
